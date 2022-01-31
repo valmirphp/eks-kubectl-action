@@ -6,7 +6,7 @@ branding:
   icon: 'command'
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/valmirphp/eks-kubectl-action:latest'
+  image: 'docker://valmirphp/eks-kubectl-action:v2'
 inputs:
   aws_access_key_id:
     description: Your AWS_ACCESS_KEY_ID
