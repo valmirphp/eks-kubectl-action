@@ -20,7 +20,9 @@ inputs:
   cluster_name:
     description: The name of the cluster you're using
     required: true
+  k8s_file_config:
+    description: Optional file config $INPUT_K8S_FILE_CONFIG
+    required: false
   args:
     description: The arguments that you want to pass through to the kubectl command
     required: true
-  
