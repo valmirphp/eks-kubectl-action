@@ -6,9 +6,11 @@ export AWS_ACCESS_KEY_ID="$INPUT_AWS_ACCESS_KEY_ID"
 export AWS_SECRET_ACCESS_KEY="$INPUT_AWS_SECRET_ACCESS_KEY"
 
 if [ ! -z "$INPUT_K8S_FILE_CONFIG" ]; then
-  echo "Print >> $INPUT_K8S_FILE_CONFIG"
-  echo "FILE: /k8s-config.yaml"
+  echo "Print configmap >> /k8s-config.yaml"
   echo $INPUT_K8S_FILE_CONFIG > /k8s-config.yaml
+  echo "=========================================================="
+  cat  /k8s-config.yaml
+  echo "=========================================================="
 fi
 
 echo "aws version"
