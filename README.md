@@ -22,14 +22,14 @@ jobs:
     steps:
       # --- #
       - name: Build and push CONTAINER_NAME
-        uses: valmirphp/eks-kubectl-action@v2
+        uses: valmirphp/eks-kubectl-action@master
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ secrets.AWS_REGION }}
           cluster_name: ${{ secrets.CLUSTER_NAME }}
           eks_role_arn: ${{ secrets.EKS_ROLE_ARN }}
-          args: set image --record deployment/pod-name pod-name=${{ steps.build.outputs.IMAGE_URL }}
+          args: set image deployment/pod-name pod-name=${{ steps.build.outputs.IMAGE_URL }}
       # --- #
 ```
 
@@ -52,10 +52,10 @@ jobs:
           aws-region: ${{ env.aws_region }}
       # --- #
       - name: Build and push CONTAINER_NAME
-        uses: valmirphp/eks-kubectl-action@v2
+        uses: valmirphp/eks-kubectl-action@master
         with:
           cluster_name: ${{ secrets.CLUSTER_NAME }}
-          args: set image --record deployment/pod-name pod-name=${{ steps.build.outputs.IMAGE_URL }}
+          args: set image deployment/pod-name pod-name=${{ steps.build.outputs.IMAGE_URL }}
       # --- #
 ```
 
@@ -73,13 +73,13 @@ jobs:
       # --- #
       - name: Build and push CONTAINER_NAME
         id: kubectl
-        uses: valmirphp/eks-kubectl-action@v2
+        uses: valmirphp/eks-kubectl-action@master
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ secrets.AWS_REGION }}
           cluster_name: ${{ secrets.CLUSTER_NAME }}
-          args: set image --record deployment/pod-name pod-name=${{ steps.build.outputs.IMAGE_URL }}
+          args: set image deployment/pod-name pod-name=${{ steps.build.outputs.IMAGE_URL }}
       # --- #
       - name: Use the output
         run: echo "{{ steps.kubectl.outputs.kubectl-out }}"
